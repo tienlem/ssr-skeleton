@@ -3,12 +3,12 @@ import useActions from 'hooks/useActions';
 import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { actions } from './slice';
-import { makeSelectIsAuthenticated } from './selectors';
+import { getIsAuthenticated } from './selectors';
 
 export const useHooks = () => {
   const history = useHistory();
   const { login } = useActions({ login: actions.login });
-  const isAuthenticated = useSelector(makeSelectIsAuthenticated);
+  const isAuthenticated = useSelector(getIsAuthenticated);
   useEffect(() => {
     if (isAuthenticated) {
       history.push('/');
@@ -38,12 +38,12 @@ export const useLogout = () => {
   const { logoutRequest } = useActions({
     logoutRequest: actions.logoutRequest,
   });
-  const isAuthenticated = useSelector(makeSelectIsAuthenticated);
+  const isAuthenticated = useSelector(getIsAuthenticated);
   const history = useHistory();
   const { pathname } = useLocation();
   useEffect(() => {
-    if (!pathname.includes('/login') && !isAuthenticated) {
-      history.push('/login');
+    if (!pathname.includes('/dang-nhap') && !isAuthenticated) {
+      history.push('/dang-nhap');
     }
   }, [isAuthenticated, history, pathname]);
   const onLogout = useCallback(() => {

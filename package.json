@@ -91,8 +91,7 @@
     "dev:build-client": "webpack --config ./internals/webpack/webpack.client.js --watch",
     "dev:server": "nodemon --watch build --exec \"node build/main.js\"",
     "start:prod": "yarn build && serve -s build",
-    "checkTs": "tsc --noEmit",
-    "eslint": "eslint --ext js,ts,tsx",
+    "eslint": "eslint --ext js,",
     "lint": "yarn eslint -- src",
     "lint:fix": "yarn eslint -- --fix src",
     "lint:css": "stylelint src/**/*.css",
@@ -116,7 +115,7 @@
     "node": ">=10.13.0"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
+    "*.{js,jsx}": [
       "npm run eslint -- --fix"
     ],
     "*.{md,json}": [
@@ -125,17 +124,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run checkTs && lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*/*.d.ts",
-      "!src/**/*/Loadable.{js,jsx,ts,tsx}",
-      "!src/**/*/types.ts",
-      "!src/index.tsx",
-      "!src/serviceWorker.ts"
+      "src/**/*.{js,jsx}",
+      "!src/**/*/Loadable.{js,jsx}"
     ],
     "coverageThreshold": {
       "global": {

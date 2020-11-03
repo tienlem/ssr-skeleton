@@ -1,5 +1,5 @@
 const AUTH_INFO_KEY = 'AuthenticationInfo';
-const I18NEXT_LANGUAGE_KEY = 'i18nextLng';
+// const I18NEXT_LANGUAGE_KEY = 'i18nextLng';
 
 export const storeAuthInfo = authInfo =>
   localStorage.setItem(AUTH_INFO_KEY, JSON.stringify(authInfo));

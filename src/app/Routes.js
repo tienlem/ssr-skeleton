@@ -1,4 +1,4 @@
-import { HomePage } from 'app/containers/HomePage/Loadable';
+import HomePage from 'app/containers/HomePage/Loadable';
 import { Login } from 'app/containers/Authentication/Loadable';
 import App from './App';
 
@@ -7,13 +7,17 @@ export default [
     ...App,
     routes: [
       {
-        component: HomePage,
+        ...HomePage,
         path: '/',
         exact: true,
       },
       {
         component: Login,
-        path: '/login',
+        path: '/dang-nhap',
+      },
+      {
+        component: Login,
+        path: '/danh-muc-san-pham',
       },
     ],
   },

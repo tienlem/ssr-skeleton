@@ -73,7 +73,7 @@ i18next
     {
       resources: translationsJson,
 
-      fallbackLng: 'en',
+      fallbackLng: 'vi',
       debug:
         process.env.NODE_ENV !== 'production' &&
         process.env.NODE_ENV !== 'test',

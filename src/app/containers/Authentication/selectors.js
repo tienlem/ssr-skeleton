@@ -7,9 +7,8 @@ import get from 'lodash/fp/get';
 
 const selectAuthenticationState = state => state.authentication;
 
-const makeSelectIsAuthenticated = createSelector(
-  selectAuthenticationState,
-  state => get('isAuthenticated', state),
+const getIsAuthenticated = createSelector(selectAuthenticationState, state =>
+  get('isAuthenticated', state),
 );
 
-export { makeSelectIsAuthenticated };
+export { getIsAuthenticated };

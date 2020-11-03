@@ -6,7 +6,7 @@ export const useAuthentication = () => {
   const history = useHistory();
   useEffect(() => {
     if (!isAuthenticated()) {
-      history.push('/login');
+      history.push('/dang-nhap');
     }
   }, []);
 };
