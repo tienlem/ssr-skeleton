@@ -1,0 +1,13 @@
+{
+  "Authentication": {
+    "logout": "__STRING_NOT_TRANSLATED__",
+    "userName": "__STRING_NOT_TRANSLATED__",
+    "requiredUserName": "__STRING_NOT_TRANSLATED__",
+    "password": "__STRING_NOT_TRANSLATED__",
+    "requiredPassword": "__STRING_NOT_TRANSLATED__",
+    "submit": "__STRING_NOT_TRANSLATED__"
+  },
+  "HomePage": {
+    "title": "Đây là trang chủ!"
+  }
+}

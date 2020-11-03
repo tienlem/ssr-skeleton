@@ -1,0 +1,13 @@
+{
+  "Authentication": {
+    "logout": "Logout",
+    "userName": "User name",
+    "requiredUserName": "User name is required!",
+    "password": "Password",
+    "requiredPassword": "Password is required!",
+    "submit": "Login"
+  },
+  "HomePage": {
+    "title": "This is Home page!"
+  }
+}
