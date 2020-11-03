@@ -8,6 +8,7 @@ import serialize from 'serialize-javascript';
 import { ServerStyleSheet } from 'styled-components';
 import { ChunkExtractor } from '@loadable/server';
 import { Helmet } from 'react-helmet';
+import { I18nextProvider } from 'react-i18next';
 import Routes from '../src/app/Routes';
 
 export default (req, store, context) => {
@@ -23,9 +24,11 @@ export default (req, store, context) => {
     extractor.collectChunks(
       sheet.collectStyles(
         <Provider store={store}>
-          <StaticRouter location={req.path} context={context}>
-            {renderRoutes(Routes)}
-          </StaticRouter>
+          <I18nextProvider i18n={req.i18n}>
+            <StaticRouter location={req.path} context={context}>
+              {renderRoutes(Routes)}
+            </StaticRouter>
+          </I18nextProvider>
         </Provider>,
       ),
     ),

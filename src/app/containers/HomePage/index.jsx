@@ -27,6 +27,7 @@ export function HomePage() {
     <div>
       <SEOMeta title={toString(isAuthenticated)} />
       {t('HomePage.title')}
+      <span className="icon-cheveron-down"></span>
     </div>
   );
 }

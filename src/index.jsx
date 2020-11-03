@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import 'sanitize.css/sanitize.css';
 import 'antd/dist/antd.css';
+import 'styles/icon-moon.css';
 import { isAuthenticated } from 'utils/localStorageUtils';
 import Routes from './app/Routes';
 import { configureAppStore } from './store/configureStore';
