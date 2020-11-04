@@ -39,7 +39,7 @@ app.get('*', (req, res) => {
   // Even if we get an error while loading data, we will still attempt to render page.
   const promises = routes
     .map(({ route }) => {
-      return route.loadData ? route.loadData(store) : null;
+      return route.loadData ? route.loadData(store, req) : null;
     })
     .map(promise => {
       if (promise) {

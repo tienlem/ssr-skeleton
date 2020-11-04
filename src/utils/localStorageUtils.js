@@ -10,12 +10,12 @@ export const LocalStorage = {
     }
   },
   set(key, value) {
-    if (localStorage.isBrowser()) {
+    if (LocalStorage.isBrowser()) {
       window.localStorage.setItem(key, value);
     }
   },
   get(key) {
-    if (localStorage.isBrowser()) {
+    if (LocalStorage.isBrowser()) {
       return window.localStorage.getItem(key);
     }
   },
@@ -34,9 +34,10 @@ export const isAuthenticated = () => {
 };
 
 export const getCurrentLanguageCode = () => {
-  if (typeof window !== 'undefined' && window?.cookie) {
-    return window.cookie.getItem(I18NEXT_LANGUAGE_KEY);
-  }
+  // if (typeof window !== 'undefined' && window?.cookie) {
+  //   return window.cookie.getItem(I18NEXT_LANGUAGE_KEY);
+  // }
+  LocalStorage.get(I18NEXT_LANGUAGE_KEY);
 };
 
 export const removeAuthInfo = () => localStorage.removeItem(AUTH_INFO_KEY);

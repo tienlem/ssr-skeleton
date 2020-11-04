@@ -5,6 +5,7 @@
   ],
   "plugins": [
     "babel-plugin-styled-components",
+    "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import",
     "macros",
     "@loadable/babel-plugin"
