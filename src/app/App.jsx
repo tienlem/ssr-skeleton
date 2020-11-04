@@ -16,9 +16,7 @@ const App = ({ route }) => {
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://pharmacity.com" />
       </Helmet>
-      <CommonLayout>
-        <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
-      </CommonLayout>
+      <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
       <GlobalStyle />
     </>
   );

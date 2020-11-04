@@ -7,4 +7,5 @@ import { loadData } from './index';
 
 const HomePage = loadable(() => import('./index'));
 
-export default { component: HomePage, loadData };
+export default HomePage;
+export { loadData };

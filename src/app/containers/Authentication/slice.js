@@ -18,7 +18,7 @@ const authenticationSlice = createSlice({
     loginSuccess(state) {
       return flow(
         set('isAuthenticated', true),
-        set('status', ACTION_STATUS.SUCCESS),
+        set(`status`, ACTION_STATUS.SUCCESS),
       )(state);
     },
     loginFailed(state, action) {

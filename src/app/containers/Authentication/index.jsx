@@ -10,7 +10,7 @@ import { sliceKey } from './slice';
 import saga from './saga';
 import useHooks from './hooks';
 
-export const Login = () => {
+export const Login = props => {
   useInjectSaga({ key: sliceKey, saga });
   const { handlers } = useHooks();
   const { onFinish, onFinishFailed } = handlers;

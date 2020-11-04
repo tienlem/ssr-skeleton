@@ -45,7 +45,6 @@ export const loadData = async (store, req) => {
   // await new Promise((reslove, reject) => {
   //   setTimeout(() => reslove('fetch done'), 3000);
   // });
-  console.log(req);
   return store.dispatch(actions.loginSuccess()); // Manually dispatch a network request
 };
 
