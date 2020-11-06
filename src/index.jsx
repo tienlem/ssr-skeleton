@@ -11,6 +11,7 @@ import 'sanitize.css/sanitize.css';
 import 'antd/dist/antd.css';
 import 'styles/icon-moon.css';
 import { isAuthenticated } from 'utils/localStorageUtils';
+import { useSSR } from 'react-i18next';
 import Routes from './app/Routes';
 import { configureAppStore } from './store/configureStore';
 
@@ -26,11 +27,14 @@ const MOUNT_NODE = document.querySelector('#root');
 
 const store = configureAppStore({ ...state, ...initialState });
 
-const ConnectedApp = () => (
-  <Provider store={store}>
-    <BrowserRouter>{renderRoutes(Routes)}</BrowserRouter>
-  </Provider>
-);
+const ConnectedApp = () => {
+  useSSR(window.initialI18nStore, window.initialLanguage);
+  return (
+    <Provider store={store}>
+      <BrowserRouter>{renderRoutes(Routes)}</BrowserRouter>
+    </Provider>
+  );
+};
 
 const render = () => {
   loadableReady(() => {

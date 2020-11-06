@@ -1,16 +1,17 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import vi from './vi/translation.json';
+import Backend from 'i18next-http-backend';
+import vi from './vi/translations.json';
 
-import en from './en/translation.json';
+import en from './en/translations.json';
 
 const translationsJson = {
   en: {
-    translation: en,
+    translations: en,
   },
   vi: {
-    translation: vi,
+    translations: vi,
   },
 };
 
@@ -60,30 +61,48 @@ const languageDetectorOptions = {
   // cookieOptions: { path: '/', sameSite: 'strict' }
 };
 
-i18next
-  // pass the i18n instance to react-i18next.
-  .use(initReactI18next)
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
-  .use(LanguageDetector)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
-  .init(
-    {
-      resources: translationsJson,
-      fallbackLng: 'vi',
-      debug:
-        process.env.NODE_ENV !== 'production' &&
-        process.env.NODE_ENV !== 'test',
+const options = {
+  fallbackLng: 'vi',
+  // resources: translationsJson,
+  load: 'languageOnly', // we only provide en, de -> no region specific locals like en-US, de-DE
+  // have a common namespace used around the full app
+  ns: ['translations'],
+  defaultNS: 'translations',
 
-      interpolation: {
-        escapeValue: false, // not needed for react as it escapes by default
-      },
-      detection: languageDetectorOptions,
+  saveMissing: true,
+  debug: true,
+  detection: languageDetectorOptions,
+  interpolation: {
+    escapeValue: false, // not needed for react!!
+    formatSeparator: ',',
+    format: (value, format, lng) => {
+      if (format === 'uppercase') return value.toUpperCase();
+      return value;
     },
-    () => {
-      convertLanguageJsonToObject(en, translations);
-    },
-  );
+  },
+  wait: process && !process.release,
+};
+
+// for browser use http backend to load translations and browser lng detector
+if (process && !process.release) {
+  i18next.use(Backend).use(initReactI18next).use(LanguageDetector);
+}
+
+// initialize if not already initialized
+if (!i18next.isInitialized) {
+  i18next.init(options);
+}
+
+// i18next
+//   // pass the i18n instance to react-i18next.
+//   .use(initReactI18next)
+//   // detect user language
+//   // learn more: https://github.com/i18next/i18next-browser-languageDetector
+//   .use(LanguageDetector)
+//   // init i18next
+//   // for all options read: https://www.i18next.com/overview/configuration-options
+//   .init(options, () => {
+//     convertLanguageJsonToObject(en, translations);
+//   });
 
 export default i18next;
